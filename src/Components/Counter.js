@@ -1,18 +1,23 @@
 import React,{useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'; 
+import {increment, decrement,resetValue} from '../Redux/Counters/counterSlice'
+
+
 
 function Counter() {
-  const [counter, setCounter]= useState(0)  
-  const [initialValue, setInitialValue]= useState(0);
+  const dispatch= useDispatch();
+  const counterValue= useSelector((state)=>state.counter.value);
+  debugger;
+  
 
-  const updateValue=()=>{
-    setCounter(initialValue);
-  }
+  
   return (
     <div>
-        <p>Current Counter value : {counter}</p>
-         <button onClick={()=> setCounter(counter+1)}>Increment</button>  
-         <button onClick={()=> setCounter(counter-1)}>Decrement</button>   
-         <input type='text' value={initialValue} onChange={(e)=>setInitialValue(parseInt(e.target.value) || 0)} /> <button onClick={updateValue}>Update Value</button>
+        <p>Current Counter value : {counterValue}</p>
+         <button onClick={()=>dispatch(increment())}>Increment</button>  
+         <button onClick={()=>dispatch(decrement())}>Decrement</button>  
+         <button onClick={()=>dispatch(resetValue())}>Reset</button> 
+      
     </div>
   )
 }
