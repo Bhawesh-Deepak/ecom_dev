@@ -1,16 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
-import {increment, decrement,resetValue} from '../Redux/Counters/counterSlice'
-
-
+import {increment, decrement,resetValue} from '../Redux/Counters/counterSlice';
 
 function Counter() {
   const dispatch= useDispatch();
   const counterValue= useSelector((state)=>state.counter.value);
-  debugger;
-  
-
-  
+ 
   return (
     <div>
         <p>Current Counter value : {counterValue}</p>
@@ -22,4 +17,4 @@ function Counter() {
   )
 }
 
-export default Counter
+export default Counter;
